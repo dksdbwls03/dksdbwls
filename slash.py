@@ -13,11 +13,10 @@ from discord import app_commands, Interaction, Object
 from discord.ext import commands
 from discord.ui import Button, View
 from discord import ButtonStyle
-
+import os
 
 now = datetime.datetime.now()
 time = f"{str(now.year)}년 {str(now.month)}월 {str(now.day)}일 {str(now.hour)}시 {str(now.minute)}분 {str(now.second)}초"
-riot_token = "RGAPI-b58e3132-07fe-49ec-82a6-68e1d9953f2c"
 
 
 class aclient(discord.Client):
@@ -36,7 +35,6 @@ class aclient(discord.Client):
 
 client = aclient()
 tree = app_commands.CommandTree(client)
-TOKEN = "MTExMjQ2MDM3ODg0OTQyNzU5Nw.Gmbbuk.Dk9XKQuU0OU7Ae0iVuVaZWgw-bJt1vgaTMsEyI"
 
 
 @tree.command(name= '공지', description= '봇을 통해 공지를 할 수 있습니다.')
@@ -151,5 +149,5 @@ async def slash2(interaction: discord.Interaction, 아이디: str, 답변: str):
         await interaction.response.send_message(embed=embed)
 
 
-
-client.run(TOKEN)
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)
